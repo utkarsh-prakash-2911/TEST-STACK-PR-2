@@ -12,5 +12,13 @@ __all__ = [
     "UserService",
     "UserAlreadyExistsError",
     "UserNotFoundError",
+    "create_app",
 ]
+
+
+def create_app():
+    """Lazily build the FastAPI app (keeps web deps optional at import time)."""
+    from .api import create_app as _create_app
+
+    return _create_app()
 __version__ = "0.1.0"
